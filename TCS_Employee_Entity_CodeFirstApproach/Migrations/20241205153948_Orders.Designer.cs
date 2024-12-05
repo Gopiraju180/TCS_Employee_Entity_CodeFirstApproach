@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCS_Employee_Entity_CodeFirstApproach;
 
@@ -10,9 +11,11 @@ using TCS_Employee_Entity_CodeFirstApproach;
 namespace TCS_Employee_Entity_CodeFirstApproach.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20241205153948_Orders")]
+    partial class Orders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,6 @@ namespace TCS_Employee_Entity_CodeFirstApproach.Migrations
                     b.ToTable("employees");
                 });
 
-
             modelBuilder.Entity("TCS_Employee_Entity_CodeFirstApproach.Entites.Orders", b =>
                 {
                     b.Property<int>("orderid")
@@ -61,27 +63,6 @@ namespace TCS_Employee_Entity_CodeFirstApproach.Migrations
                     b.HasKey("orderid");
 
                     b.ToTable("orderss");
-
-            modelBuilder.Entity("TCS_Employee_Entity_CodeFirstApproach.Entites.Departement", b =>
-                {
-                    b.Property<int>("deptid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("deptid"));
-
-                    b.Property<string>("deptlocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("deptname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("deptid");
-
-                    b.ToTable("departements");
-
                 });
 #pragma warning restore 612, 618
         }
