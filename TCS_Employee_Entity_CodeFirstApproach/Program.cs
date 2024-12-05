@@ -19,8 +19,13 @@ Options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
+
 builder.Services.AddScoped<IOrdersRepository,OrdersRepository>();
 builder.Services.AddScoped<IOrdersService,OrdersService>();
+
+builder.Services.AddScoped<IDepartementRepository, DepartementRepository>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
 
 
 builder.Services.AddEndpointsApiExplorer();
