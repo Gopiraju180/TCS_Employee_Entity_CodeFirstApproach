@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using TCS_Employee_Entity_CodeFirstApproach;
 using TCS_Employee_Entity_CodeFirstApproach.Interfaces;
+using TCS_Employee_Entity_CodeFirstApproach.Repositories;
+using TCS_Employee_Entity_CodeFirstApproach.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,9 @@ Options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+builder.Services.AddScoped<IOrdersRepository,OrdersRepository>();
+builder.Services.AddScoped<IOrdersService,OrdersService>();
 
 
 builder.Services.AddEndpointsApiExplorer();
